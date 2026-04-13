@@ -185,7 +185,7 @@ export class PostsService {
     Object.assign(post, {
       ...dto,
       excerpt: dto.excerpt ?? post.excerpt,
-      published: dto.published ?? post.published,
+      published: dto.published === undefined ? post.published : dto.published,
     });
     return this.postRepository.save(post);
   }
