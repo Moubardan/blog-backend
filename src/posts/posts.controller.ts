@@ -23,6 +23,9 @@ import { IsOwnerGuard } from "../auth/is-owner.guard";
 
 @Controller("posts")
 export class PostsController {
+  private static readonly UUID_ROUTE_PARAM =
+    ":id([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})";
+
   constructor(private readonly postsService: PostsService) {}
 
   @Get()
@@ -36,7 +39,7 @@ export class PostsController {
     return this.postsService.findMine(req.user.id);
   }
 
-  @Get("mine/:id")
+  @Get(`mine/${PostsController.UUID_ROUTE_PARAM}`)
   @UseGuards(JwtAuthGuard)
   findMineOne(
     @Param("id", ParseUUIDPipe) id: string,
@@ -50,7 +53,7 @@ export class PostsController {
     return this.postsService.findBySlug(slug);
   }
 
-  @Get(":id")
+  @Get(PostsController.UUID_ROUTE_PARAM)
   findOne(@Param("id", ParseUUIDPipe) id: string) {
     return this.postsService.findOne(id);
   }
@@ -64,7 +67,7 @@ export class PostsController {
     return this.postsService.create(dto, req.user.id);
   }
 
-  @Post(":id/comments")
+  @Post(`${PostsController.UUID_ROUTE_PARAM}/comments`)
   @UseGuards(JwtAuthGuard)
   addComment(
     @Param("id", ParseUUIDPipe) id: string,
@@ -74,7 +77,7 @@ export class PostsController {
     return this.postsService.addComment(id, dto, req.user.id);
   }
 
-  @Patch(":id")
+  @Patch(PostsController.UUID_ROUTE_PARAM)
   @UseGuards(JwtAuthGuard, IsOwnerGuard)
   update(
     @Param("id", ParseUUIDPipe) id: string,
@@ -84,7 +87,7 @@ export class PostsController {
     return this.postsService.update(id, dto, req.user.id);
   }
 
-  @Delete(":id")
+  @Delete(PostsController.UUID_ROUTE_PARAM)
   @UseGuards(JwtAuthGuard, IsOwnerGuard)
   remove(
     @Param("id", ParseUUIDPipe) id: string,
