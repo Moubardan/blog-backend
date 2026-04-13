@@ -24,6 +24,7 @@
         "@nestjs/platform-express": "^10.4.0",
         "@nestjs/typeorm": "^10.0.2",
         "bcryptjs": "^2.4.3",
+        "blog-shared-types": "git+https://github.com/Moubardan/blog-shared-types.git",
         "class-transformer": "^0.5.1",
         "class-validator": "^0.14.1",
         "passport": "^0.7.0",
@@ -68,9 +69,6 @@
             "!**/node_modules/**"
         ],
         "coverageDirectory": "../coverage",
-        "testEnvironment": "node",
-        "moduleNameMapper": {
-            "^@shared/(.*)$": "<rootDir>/../../shared/$1"
-        }
+        "testEnvironment": "node"
     }
 }
