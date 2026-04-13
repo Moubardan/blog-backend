@@ -27,6 +27,12 @@ export class Post {
   @Column({ type: "text" })
   content: string;
 
+  @Column({ type: "text", nullable: true })
+  excerpt: string | null;
+
+  @Column({ default: false })
+  published: boolean;
+
   @Column({ name: "author_id" })
   @Index()
   authorId: string;

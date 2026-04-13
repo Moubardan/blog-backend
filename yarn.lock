@@ -1585,6 +1585,10 @@ bl@^4.0.3, bl@^4.1.0:
     inherits "^2.0.4"
     readable-stream "^3.4.0"
 
+"blog-shared-types@git+https://github.com/Moubardan/blog-shared-types.git":
+  version "0.1.0"
+  resolved "git+https://github.com/Moubardan/blog-shared-types.git#fce45c7a5fc57e6ac47b902438a09a1805529d1e"
+
 body-parser@1.20.4, body-parser@~1.20.3:
   version "1.20.4"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.20.4.tgz#f8e20f4d06ca8a50a71ed329c15dccad1cdc547f"
