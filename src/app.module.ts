@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AuthModule } from "./auth/auth.module";
 import { PostsModule } from "./posts/posts.module";
+import { TestSupportModule } from "./test-support/test-support.module";
 import { User } from "./entities/user.entity";
 import { Post } from "./entities/post.entity";
 import { Comment } from "./entities/comment.entity";
@@ -47,6 +48,7 @@ import { Comment } from "./entities/comment.entity";
     }),
     AuthModule,
     PostsModule,
+    TestSupportModule,
   ],
 })
 export class AppModule {}
